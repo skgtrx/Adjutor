@@ -1,0 +1,4 @@
+# Needed packages
+kivy>=1.10.0
+pyowm
+json
