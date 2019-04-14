@@ -1,0 +1,1 @@
+Unzip city.zip before running the adjutor.py file
