@@ -1,7 +1,9 @@
-# Project : Adjutor
-# Description : Kivy GUI based utility application.
-# Author : skgtrx
-# Copyright : MITopen@skgtrx
+'''
+Project : Adjutor
+Description : Kivy GUI based utility application.
+Author : skgtrx
+Copyright : MITopen@skgtrx
+'''
 
 # Import kivy packages
 from kivy.uix.textinput import TextInput
@@ -81,7 +83,10 @@ class NewsScreen(Screen):
     pass
 
 class WikiSearchScreen(Screen):
-    pass
+
+    def get_wiki(self):
+        text=self.ids.wiki.text
+        self.ids.wikiResult.text=wikipedia.get_summary(text)
 
 class CodingScreen(Screen):
     pass
