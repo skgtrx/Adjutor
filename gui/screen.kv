@@ -165,7 +165,7 @@ ScreenManager:
 		Button:
 			size_hint_x: .2
 			text: 'Enter'
-			#on_press : root.get_wiki()
+			on_press : root.get_wiki()
 	GridLayout:
 		cols:1
 		rows:1
@@ -173,7 +173,7 @@ ScreenManager:
 		ScrollView:
 			#size_hint_y: .9
 			Label:
-				text: 'some really           really long string \\n\\n' * 100
+				id: wikiResult
 				font_size: 16
 				text_size: self.width, None
 				size_hint_y: None
