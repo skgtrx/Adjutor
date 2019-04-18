@@ -1,0 +1,1 @@
+from .wikipedia import get_summary
