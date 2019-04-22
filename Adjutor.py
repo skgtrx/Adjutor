@@ -82,6 +82,18 @@ class WeatherScreen(Screen):
 class NewsScreen(Screen):
     pass
 
+class TopHeadlines(Screen):
+    pass
+
+class NewsByCategory(Screen):
+    pass
+
+class NewsByTopic(Screen):
+    pass
+
+class AdjutorExclusive(Screen):
+    pass
+
 class WikiSearchScreen(Screen):
 
     def get_wiki(self):
