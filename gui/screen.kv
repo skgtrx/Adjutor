@@ -9,6 +9,10 @@ ScreenManager:
     WeatherScreen:
 	WikiSearchScreen:
 	NewsScreen:
+	TopHeadlines:
+	NewsByCategory:
+	NewsByTopic:
+	AdjutorExclusive:
 	CodingScreen:
     EndScreen:
 <StartScreen>:
@@ -76,66 +80,35 @@ ScreenManager:
 <NewsScreen>:
 	name: 'news_screen'
 	GridLayout:
-		cols: 2
-		rows: 1
-		padding : 0,0,0,60
-		GridLayout:
-			cols:1
-			padding : 0,10,0,0
-			spacing :5
-			TextInput:
-				id : newsq
-				size_hint_y : 0.25
-				width : 20
-				hint_text: 'News Search'
-				multiline:False
-				readonly: False
-				focus:True
-			Button:
-				text: "Enter"
-				size_hint_y : None
-				size_hint_x : None
-				width: 70
-				height: 30
-				pos_hint: {'center_x': 10, 'center_y': 10}
-				
-			
-			Button: 
-				id: btn
-				text: 'Category'
-				on_release: dropdown.open(self)
-				size_hint_y: None
-				height: '48dp'
-			Widget:
-				on_parent: dropdown.dismiss()
-			DropDown:
-				id: dropdown
-				on_select: btn.text = 'Selected value: {}'.format(args[1])
-				Button:
-					text: 'Value A'
-					size_hint_y: None
-					height: '48dp'
-					#on_release: dropdown.select('A')
-
-				Button:
-					text: 'Value B'
-					size_hint_y: None
-					height: '48dp'
-					#on_release: dropdown.select('B')
-
-				Button:
-					text: 'Value C'
-					size_hint_y: None
-					height: '48dp'
-					#on_release: dropdown.select('C')
-			Button:
-				text:
-			Button:
-				text:
-
+		padding: 10,10,10,70
+		rows:2
+		cols:2
+		spacing: 10
 		Button:
-			size_hint_x: 1.7
-			text:
+			text: 'Top Headlines'
+			on_press:
+				app.root.transition.direction = 'left' 
+				app.root.current = 'top_headlines'
+		Button:
+			text:'News By Category'
+			#background_normal:  "weather.gif"
+        	#background_down:    "start.png"
+			on_press: 
+				app.root.transition.direction = 'left' 
+				app.root.current = 'news_by_category'
+			background: 0, 0, 0, 0
+		Button:
+			text:'News By Topic'
+			on_press:
+				app.root.transition.direction = 'left'  
+				app.root.current = 'news_by_topic'
+			#background_color: 0, 0, 0, 0
+		Button:
+			text: "Adjutor Exclusive"
+			#background_normal:  "icons/weather.png"
+			on_press:
+				app.root.transition.direction = 'left'  
+				app.root.current = 'adjutor_exclusive'
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
@@ -150,6 +123,75 @@ ScreenManager:
 			Button:
 				on_press: app.root.current = 'end_screen'
 				text: "Exit"
+
+<TopHeadlines>:
+	name: 'top_headlines'
+	AnchorLayout:
+		anchor_x: 'center'
+		anchor_y: 'bottom'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Button:
+				on_press: 
+					app.root.transition.direction = 'right'
+					app.root.current = 'news_screen'
+				text: "Back"
+			Button:
+				on_press: app.root.current = 'end_screen'
+				text: "Exit"
+
+<NewsByCategory>:
+	name: 'news_by_category'
+	AnchorLayout:
+		anchor_x: 'center'
+		anchor_y: 'bottom'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Button:
+				on_press: 
+					app.root.transition.direction = 'right'
+					app.root.current = 'news_screen'
+				text: "Back"
+			Button:
+				on_press: app.root.current = 'end_screen'
+				text: "Exit"
+
+<NewsByTopic>:
+	name: 'news_by_topic'
+	AnchorLayout:
+		anchor_x: 'center'
+		anchor_y: 'bottom'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Button:
+				on_press: 
+					app.root.transition.direction = 'right'
+					app.root.current = 'news_screen'
+				text: "Back"
+			Button:
+				on_press: app.root.current = 'end_screen'
+				text: "Exit"
+
+<AdjutorExclusive>:
+	name: 'adjutor_exclusive'
+	AnchorLayout:
+		anchor_x: 'center'
+		anchor_y: 'bottom'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: 1, .1
+			Button:
+				on_press: 
+					app.root.transition.direction = 'right'
+					app.root.current = 'news_screen'
+				text: "Back"
+			Button:
+				on_press: app.root.current = 'end_screen'
+				text: "Exit"
+
 <WikiSearchScreen>:
 	name: 'wiki_screen'
 	GridLayout:
@@ -325,150 +367,3 @@ ScreenManager:
 			Button:
 				on_press: app.stop()
 				text: "Exit"
-
-#### Reference ####
-<VideoScreen>:
-    name: 'video_screen'
-	BoxLayout:
-        AnchorLayout:
-			anchor_x: 'center'
-			anchor_y: 'top'
-			BoxLayout:
-				orientation: 'horizontal'
-				size_hint_y: None
-				size_hint_x: 1
-				Label:
-					id:toolbartext1
-					size: self.width, self.height / 2.5
-					markup: True
-					size : self.texture_size
-                    text: "[size=40][color=33ff33][b]Video Downloader[/b][/color][/size]"
-					bcolor: 1, 0, 0 ,0.5
-					canvas.before:
-						Color:
-							rgba: self.bcolor
-						Rectangle:
-							pos:self.pos
-							size:self.size
-							#pos: 0,self.center_y+10
-							#size: self.width, self.height / 2.5
-							#radius: [50,] 
-			GridLayout:
-				rows:1
-				padding:50,150,50,420
-				TextInput:
-					id: vidtxt
-					hint_text: 'Enter URL'
-					multiline:False
-					focus:True
-				#Button:
-				#	id: urlpush1
-				#	size_hint_x: 0.40 
-				#	text:"Download"
-				#	on_press : root.download()
-			GridLayout:
-				rows:2
-				padding:50,280,50,200
-				Button:
-					text:'Audio'
-					on_press : root.downloadAudio()
-				Button:
-					text:'360'
-					on_press : root.download360()
-				Button:
-					text:'480'
-					on_press : root.download480()
-				Button:
-					text:'720'
-					on_press : root.download720()
-			GridLayout:
-				rows:2	
-				padding:50,400,50,150
-				Button:
-					text:'1080'
-					on_press : root.download1080()
-				
-			AnchorLayout:
-				anchor_x: 'center'
-				anchor_y: 'bottom'
-				BoxLayout:
-					orientation: 'horizontal'
-					size_hint: 1, .1
-					Button:
-						on_press: app.root.current = 'select_screen'
-						text: "Back"
-					Button:
-						on_press: app.root.current = 'second_screen'
-						text: "Exit"
-<PlaylistScreen>:
-    name: 'playlist_screen'
-	BoxLayout:
-        AnchorLayout:
-			anchor_x: 'center'
-			anchor_y: 'top'
-			BoxLayout:
-				orientation: 'horizontal'
-				size_hint_y: None
-				size_hint_x: 1
-				Label:
-					id:toolbartext2
-					size: self.width, self.height / 2.5
-					markup: True
-					size : self.texture_size
-                    text: "[size=40][color=33ff33][b]Playlist Downloader[/b][/color][/size]"
-					bcolor: 1, 0, 0 ,0.5
-					canvas.before:
-						Color:
-							rgba: self.bcolor
-						Rectangle:
-							pos: self.pos
-							size: self.size 
-			GridLayout:
-				rows:1
-				padding:50,150,50,420
-				TextInput:
-					id: playtxt
-					hint_text: 'Enter URL'
-					multiline:False
-					focus:True
-				#Button:
-				#	id: urlpush1
-				#	size_hint_x: 0.40 
-				#	text:"Download"
-				#	on_press : root.download()
-			GridLayout:
-				rows:2
-				padding:50,280,50,200
-				Button:
-					text:'Audio'
-					on_press : root.downloadAudio()
-				Button:
-					text:'360'
-					on_press : root.download360()
-				Button:
-					text:'480'
-					on_press : root.download480()
-				Button:
-					text:'720'
-					on_press : root.download720()
-			GridLayout:
-				rows:2	
-				padding:50,400,50,150
-				Button:
-					text:'1080'
-					on_press : root.download1080()
-
-			AnchorLayout:
-				anchor_x: 'center'
-				anchor_y: 'bottom'
-				BoxLayout:
-					orientation: 'horizontal'
-					size_hint: 1, .1
-					Button:
-						on_press: app.root.current = 'select_screen'
-						text: "Back"
-					Button:
-						on_press: app.root.current = 'second_screen'
-						text: "Exit"
-
-			
