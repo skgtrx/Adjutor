@@ -4,9 +4,9 @@
 # Copyright : MITopen@skgtrx
 
 ScreenManager:
-    StartScreen:
+    StartScreen: 
 	SelectScreen:
-    WeatherScreen:
+    WeatherScreen: 
 	WikiSearchScreen:
 	NewsScreen:
 	TopHeadlines:
@@ -14,7 +14,7 @@ ScreenManager:
 	NewsByTopic:
 	AdjutorExclusive:
 	CodingScreen:
-    EndScreen:
+    EndScreen: 
 <StartScreen>:
 	GridLayout:
 		Label:
@@ -57,6 +57,12 @@ ScreenManager:
 				app.root.transition.direction = 'left' 
 				app.root.current = 'news_screen'
 		Button:
+			text: "Weather"
+			#background_normal:  "icons/weather.png"
+			on_press:
+				app.root.transition.direction = 'left'  
+				app.root.current = 'weather_screen'
+		Button:
 			text:'Wiki Search'
 			#background_normal:  "weather.gif"
         	#background_down:    "start.png"
@@ -70,12 +76,7 @@ ScreenManager:
 				app.root.transition.direction = 'left'  
 				app.root.current = 'coding_screen'
 			#background_color: 0, 0, 0, 0
-		Button:
-			text: "Weather"
-			#background_normal:  "icons/weather.png"
-			on_press:
-				app.root.transition.direction = 'left'  
-				app.root.current = 'weather_screen'
+		
 
 <NewsScreen>:
 	name: 'news_screen'
@@ -89,6 +90,8 @@ ScreenManager:
 			on_press:
 				app.root.transition.direction = 'left' 
 				app.root.current = 'top_headlines'
+				#root.get_top_headlines()
+
 		Button:
 			text:'News By Category'
 			#background_normal:  "weather.gif"
@@ -126,6 +129,44 @@ ScreenManager:
 
 <TopHeadlines>:
 	name: 'top_headlines'
+	GridLayout:
+		rows: 10
+		padding: 10,10,10,70
+		spacing: 5
+		Label:
+			id: top_1
+			text: 
+			halign: 'right'
+    		valign: 'middle'
+			on_touch_down: root.headline_1()
+		Button:
+			id: top_2
+			text:
+		Button:
+			id: top_3
+			text:
+		Button:
+			id: top_4
+			text:
+		Button:
+			id: top_5
+			text:
+		Button:
+			id: top_6
+			text:
+		Button:
+			id: top_7
+			text:
+		Button:
+			id: top_8
+			text:
+		Button:
+			id: top_9
+			text:
+		Button:
+			id: top_10
+			text:
+
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
@@ -143,6 +184,34 @@ ScreenManager:
 
 <NewsByCategory>:
 	name: 'news_by_category'
+	GridLayout:
+		cols: 5
+		padding: 10,10,10,550
+		spacing: 5
+		Button:
+			text: 'Business'
+		Button:
+			text: 'Entertainment'
+		Button:
+			text: 'Health'
+		Button:
+			text: 'Sports'
+		Button:
+			text: 'Technology'
+	
+	GridLayout:
+		cols:1
+		rows:1
+		padding: 10,70,10,70
+		ScrollView:
+			Label:
+				id: newsCategory
+				text: 'skgtrx '*5000
+				font_size: 16
+				text_size: self.width, None
+				size_hint_y: None
+				height: self.texture_size[1]
+	
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
@@ -160,6 +229,33 @@ ScreenManager:
 
 <NewsByTopic>:
 	name: 'news_by_topic'
+	GridLayout:
+		rows:1
+		cols:2
+		padding:50,20,50,550
+		TextInput:
+			id: newsTopic
+			hint_text: 'News Topic'
+			multiline:False
+			readonly: False
+			focus:True
+		Button:
+			size_hint_x: .2
+			text: 'Enter'
+			#on_press : root.get_wiki()
+	GridLayout:
+		cols:1
+		rows:1
+		padding: 10,70,10,70
+		ScrollView:
+			#size_hint_y: .9
+			Label:
+				id: newsTopicResult
+				text: 'News '* 1000
+				font_size: 16
+				text_size: self.width, None
+				size_hint_y: None
+				height: self.texture_size[1]
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
@@ -177,6 +273,42 @@ ScreenManager:
 
 <AdjutorExclusive>:
 	name: 'adjutor_exclusive'
+	GridLayout:
+		rows: 10
+		padding: 10,10,10,70
+		spacing: 5
+		Label:
+			id: ae_1
+			text:
+			on_touch_down: root.ae_1()
+		Button:
+			id: ae_2
+			text:
+		Button:
+			id: ae_3
+			text:
+		Button:
+			id: ae_4
+			text:
+		Button:
+			id: ae_5
+			text:
+		Button:
+			id: ae_6
+			text:
+		Button:
+			id: ae_7
+			text:
+		Button:
+			id: ae_8
+			text:
+		Button:
+			id: ae_9
+			text:
+		Button:
+			id: ae_10
+			text:
+
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
