@@ -26,6 +26,10 @@ from module import news
 from module import coding
 # Import Modules
 
+# Other Imports
+import webbrowser
+# Other Imports
+
 # Output frame size
 Window.size = (800, 600)
 
@@ -83,7 +87,21 @@ class NewsScreen(Screen):
     pass
 
 class TopHeadlines(Screen):
-    pass
+
+    def on_parent(self,widget,parent):
+        self.ids.top_1.text = 'Headline-1'
+        self.ids.top_2.text = 'Headline-2'
+        self.ids.top_3.text = 'Headline-3'
+        self.ids.top_4.text = 'Headline-4'
+        self.ids.top_5.text = 'Headline-5'
+        self.ids.top_6.text = 'Headline-6'
+        self.ids.top_7.text = 'Headline-7'
+        self.ids.top_8.text = 'Headline-8'
+        self.ids.top_9.text = 'Headline-9'
+        self.ids.top_10.text = 'Headline-10'
+
+    def headline_1(self):
+        webbrowser.open('http://google.com', new=2)
 
 class NewsByCategory(Screen):
     pass
@@ -92,7 +110,21 @@ class NewsByTopic(Screen):
     pass
 
 class AdjutorExclusive(Screen):
-    pass
+    
+    def on_parent(self,widget,parent):
+        self.ids.ae_1.text = 'Headline-1'
+        self.ids.ae_2.text = 'Headline-2'
+        self.ids.ae_3.text = 'Headline-3'
+        self.ids.ae_4.text = 'Headline-4'
+        self.ids.ae_5.text = 'Headline-5'
+        self.ids.ae_6.text = 'Headline-6'
+        self.ids.ae_7.text = 'Headline-7'
+        self.ids.ae_8.text = 'Headline-8'
+        self.ids.ae_9.text = 'Headline-9'
+        self.ids.ae_10.text = 'Headline-10'
+    
+    def ae_1(self):
+        webbrowser.open('http://google.com', new=2)
 
 class WikiSearchScreen(Screen):
 
