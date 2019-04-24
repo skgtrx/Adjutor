@@ -1,8 +1,10 @@
-# Project : Adjutor
-# Description : Kivy GUI based utility application.
-# Author : skgtrx
-# Copyright : MITopen@skgtrx
+#Project : Adjutor
+#Description : Kivy GUI based utility application.
+#Author : skgtrx
+#Copyright : MITopen@skgtrx
 
+#:import Label kivy.uix.label.Label
+#:import Button kivy.uix.button.Button
 ScreenManager:
     StartScreen: 
 	SelectScreen:
@@ -133,39 +135,51 @@ ScreenManager:
 		rows: 10
 		padding: 10,10,10,70
 		spacing: 5
-		Label:
+		Button:
 			id: top_1
 			text: 
-			halign: 'right'
-    		valign: 'middle'
-			on_touch_down: root.headline_1()
+			background_color: (0.0, 0.0, 0.0, 1.0)
+			on_press: root.headline_opener(0)
 		Button:
 			id: top_2
 			text:
+			on_press: root.headline_opener(1)
 		Button:
 			id: top_3
-			text:
+			text: 
+			background_color: (0.0, 0.0, 0.0, 1.0)
+			on_press: root.headline_opener(2)
 		Button:
 			id: top_4
 			text:
+			on_press: root.headline_opener(3)
 		Button:
 			id: top_5
-			text:
+			text: 
+			background_color: (0.0, 0.0, 0.0, 1.0)
+			on_press: root.headline_opener(4)
 		Button:
 			id: top_6
 			text:
+			on_press: root.headline_opener(5)
 		Button:
 			id: top_7
-			text:
+			text: 
+			background_color: (0.0, 0.0, 0.0, 1.0)
+			on_press: root.headline_opener(6)
 		Button:
 			id: top_8
 			text:
+			on_press: root.headline_opener(7)
 		Button:
 			id: top_9
-			text:
+			text: 
+			background_color: (0.0, 0.0, 0.0, 1.0)
+			on_press: root.headline_opener(8)
 		Button:
 			id: top_10
 			text:
+			on_press: root.headline_opener(9)
 
 	AnchorLayout:
 		anchor_x: 'center'
@@ -368,6 +382,39 @@ ScreenManager:
 				text: "Exit"
 <CodingScreen>:
 	name: 'coding_screen'
+	GridLayout:
+		cols: 1
+		rows: 1
+		padding:200,20,200,550
+		Button:
+			text: 'Update'
+	GridLayout:
+		cols: 4
+		rows: 1
+		padding:10,55,10,515
+		Label:
+			text: 'Event'
+		Label:
+			text: 'Start'
+		Label:
+			text: 'End'
+		Label:
+			text: 'Event Link'
+	ScrollView:
+		size_hint: 1, 0.75
+        pos_hint:{'x': .0, 'y': .12}
+        size: 100, 100
+		#:import Button kivy.uix.button.Button
+		GridLayout:
+			size_hint: None,None
+			width: 800
+            height: 2000
+			cols:4
+			padding: 10,10,10,10
+			spacing: 5
+			on_parent:
+				for i in range(50): self.add_widget(Label(text=str(i)));self.add_widget(Label(text=str(i)));self.add_widget(Label(text=str(i)));self.add_widget(Button(text=str(i)))
+				
 	AnchorLayout:
 		anchor_x: 'center'
 		anchor_y: 'bottom'
