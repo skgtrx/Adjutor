@@ -1,6 +1,6 @@
 '''
 Project : Adjutor
-Description : Kivy GUI based utility application.
+Description : Kivy GUI based utility appliq_resion.
 Author : skgtrx
 Copyright : MITopen@skgtrx
 '''
@@ -34,7 +34,7 @@ import webbrowser
 # Output frame size
 Window.size = (800, 600)
 
-# Location Database 
+# Loq_resion Database 
 with open('data/city.json', 'r',encoding="utf8") as f:
     data = json.load(f)
 city = []
@@ -42,9 +42,9 @@ code = {}
 for i in data:
     city.append(i['name'])
     code[i['name']]=i['country']
-# Location Database
+# Loq_resion Database
 
-# Application Screens
+# Appliq_resion Screens
 class StartScreen(Screen):
     pass
 
@@ -110,8 +110,36 @@ class NewsByCategory(Screen):
     pass
 
 class NewsByTopic(Screen):
-    pass
 
+    def news_on_screen_loader(self):
+        self.query = self.ids.newsTopic.text
+        news_list = news.get_news(self.query)
+        self.ids.q_res_1.text = news_list[0]
+        self.ids.q_res_2.text = news_list[1]
+        self.ids.q_res_3.text = news_list[2]
+        self.ids.q_res_4.text = news_list[3]
+        self.ids.q_res_5.text = news_list[4]
+        self.ids.q_res_6.text = news_list[5]
+        self.ids.q_res_7.text = news_list[6]
+        self.ids.q_res_8.text = news_list[7]
+        self.ids.q_res_9.text = news_list[8]
+        self.ids.q_res_10.text = news_list[9]
+        self.ids.q_res_11.text = news_list[10]
+        self.ids.q_res_12.text = news_list[11]
+        self.ids.q_res_13.text = news_list[12]
+        self.ids.q_res_14.text = news_list[13]
+        self.ids.q_res_15.text = news_list[14]
+        self.ids.q_res_16.text = news_list[15]
+        self.ids.q_res_17.text = news_list[16]
+        self.ids.q_res_18.text = news_list[17]
+        self.ids.q_res_19.text = news_list[18]
+        self.ids.q_res_20.text = news_list[19]
+        
+        self.news_link_list = news.query_headlines_link(self.query)
+    
+    def query_opener(self,ids):
+        webbrowser.open(self.news_link_list[ids],new=2)
+    
 class AdjutorExclusive(Screen):
     
     def on_parent(self,widget,parent):
