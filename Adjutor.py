@@ -16,6 +16,7 @@ kivy.require('1.10.0')
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import ObjectProperty
 from kivy.core.window import Window
 # Import GUI Packages
 
@@ -89,19 +90,21 @@ class NewsScreen(Screen):
 class TopHeadlines(Screen):
 
     def on_parent(self,widget,parent):
-        self.ids.top_1.text = 'Headline-1'
-        self.ids.top_2.text = 'Headline-2'
-        self.ids.top_3.text = 'Headline-3'
-        self.ids.top_4.text = 'Headline-4'
-        self.ids.top_5.text = 'Headline-5'
-        self.ids.top_6.text = 'Headline-6'
-        self.ids.top_7.text = 'Headline-7'
-        self.ids.top_8.text = 'Headline-8'
-        self.ids.top_9.text = 'Headline-9'
-        self.ids.top_10.text = 'Headline-10'
+        # Headlines Loader
+        self.ids.top_1.text = news.top_headlines()[0]
+        self.ids.top_2.text = news.top_headlines()[1]
+        self.ids.top_3.text = news.top_headlines()[2]
+        self.ids.top_4.text = news.top_headlines()[3]
+        self.ids.top_5.text = news.top_headlines()[4]
+        self.ids.top_6.text = news.top_headlines()[5]
+        self.ids.top_7.text = news.top_headlines()[6]
+        self.ids.top_8.text = news.top_headlines()[7]
+        self.ids.top_9.text = news.top_headlines()[8]
+        self.ids.top_10.text = news.top_headlines()[9]
 
-    def headline_1(self):
-        webbrowser.open('http://google.com', new=2)
+    def headline_opener(self,ids):
+        webbrowser.open(news.top_headlines_link()[ids],new=2)
+
 
 class NewsByCategory(Screen):
     pass
@@ -112,6 +115,7 @@ class NewsByTopic(Screen):
 class AdjutorExclusive(Screen):
     
     def on_parent(self,widget,parent):
+        # for test
         self.ids.ae_1.text = 'Headline-1'
         self.ids.ae_2.text = 'Headline-2'
         self.ids.ae_3.text = 'Headline-3'
@@ -124,6 +128,7 @@ class AdjutorExclusive(Screen):
         self.ids.ae_10.text = 'Headline-10'
     
     def ae_1(self):
+        # for test
         webbrowser.open('http://google.com', new=2)
 
 class WikiSearchScreen(Screen):
