@@ -197,20 +197,22 @@ class NewsByTopic(Screen):
 class AdjutorExclusive(Screen):
     
     def on_parent(self,widget,parent):
-        # for test
-        self.ids.ae_1.text = 'Headline-1'
-        self.ids.ae_2.text = 'Headline-2'
-        self.ids.ae_3.text = 'Headline-3'
-        self.ids.ae_4.text = 'Headline-4'
-        self.ids.ae_5.text = 'Headline-5'
-        self.ids.ae_6.text = 'Headline-6'
-        self.ids.ae_7.text = 'Headline-7'
-        self.ids.ae_8.text = 'Headline-8'
-        self.ids.ae_9.text = 'Headline-9'
-        self.ids.ae_10.text = 'Headline-10'
+        news_list = news.top_headlines(country='in')
+        self.ids.ae_1.text = news_list[0]
+        self.ids.ae_2.text = news_list[1]
+        self.ids.ae_3.text = news_list[2]
+        self.ids.ae_4.text = news_list[3]
+        self.ids.ae_5.text = news_list[4]
+        self.ids.ae_6.text = news_list[5]
+        self.ids.ae_7.text = news_list[6]
+        self.ids.ae_8.text = news_list[7]
+        self.ids.ae_9.text = news_list[8]
+        self.ids.ae_10.text = news_list[9]
+        
+        self.news_link_list = news.top_headlines_link(country='in')
     
     def headline_opener(self,ids):
-        webbrowser.open(news.ae_headlines_link()[ids],new=2)
+        webbrowser.open(self.news_link_list[ids],new=2)
 
 class WikiSearchScreen(Screen):
 
