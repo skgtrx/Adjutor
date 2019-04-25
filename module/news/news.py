@@ -40,11 +40,40 @@ def query_headlines_link(query):
 	for i in range(len(query_news['articles'])):
 		query_headlines_link.append(query_news['articles'][i]['url'])
 	return query_headlines_link
+
+# News By Category
+
+def cat_headlines(category='general'):
+	cat_news = news.get_top_headlines(category=category,country='us',page_size=20)
+	cat_headlines=[]
+	for i in range(len(cat_news['articles'])):
+		#111
+		title = cat_news['articles'][i]['title']
+		if(len(title)>105):
+			cat_headlines.append(title[:105]+'. . .')
+		else:
+			cat_headlines.append(title)
+	return cat_headlines
+
+def cat_headlines_link(category='general'):
+	cat_news = news.get_top_headlines(category=category,country='us',page_size=20)
+	cat_headlines_link=[]
+	for i in range(len(cat_news['articles'])):
+		cat_headlines_link.append(cat_news['articles'][i]['url'])
+	return cat_headlines_link
+
+# Adjutor Exclusive
+
+def ae_headlines():
+	pass
+
+def ae_headlines_link():
+	pass
+	
 '''
-# Tester
-x = get_news('srilanka')
+x = cat_headlines()
 [print(i) for i in x]
 
-x = query_headlines_link('srilanka')
+x = cat_headlines_link()
 [print(i) for i in x]
 '''
