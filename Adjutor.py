@@ -107,7 +107,61 @@ class TopHeadlines(Screen):
 
 
 class NewsByCategory(Screen):
-    pass
+    
+    def on_parent(self,widget,parent):
+        # Headlines Loader
+        news_list = news.cat_headlines()
+        self.ids.cat_1.text = news_list[0]
+        self.ids.cat_2.text = news_list[1]
+        self.ids.cat_3.text = news_list[2]
+        self.ids.cat_4.text = news_list[3]
+        self.ids.cat_5.text = news_list[4]
+        self.ids.cat_6.text = news_list[5]
+        self.ids.cat_7.text = news_list[6]
+        self.ids.cat_8.text = news_list[7]
+        self.ids.cat_9.text = news_list[8]
+        self.ids.cat_10.text = news_list[9]
+        self.ids.cat_11.text = news_list[10]
+        self.ids.cat_12.text = news_list[11]
+        self.ids.cat_13.text = news_list[12]
+        self.ids.cat_14.text = news_list[13]
+        self.ids.cat_15.text = news_list[14]
+        self.ids.cat_16.text = news_list[15]
+        self.ids.cat_17.text = news_list[16]
+        self.ids.cat_18.text = news_list[17]
+        self.ids.cat_19.text = news_list[18]
+        self.ids.cat_20.text = news_list[19]
+        # Link Generator
+        self.news_link_list = news.cat_headlines_link()
+    
+
+    def cat_news_loader(self,category):
+        news_list = news.cat_headlines(category)
+        self.ids.cat_1.text = news_list[0]
+        self.ids.cat_2.text = news_list[1]
+        self.ids.cat_3.text = news_list[2]
+        self.ids.cat_4.text = news_list[3]
+        self.ids.cat_5.text = news_list[4]
+        self.ids.cat_6.text = news_list[5]
+        self.ids.cat_7.text = news_list[6]
+        self.ids.cat_8.text = news_list[7]
+        self.ids.cat_9.text = news_list[8]
+        self.ids.cat_10.text = news_list[9]
+        self.ids.cat_11.text = news_list[10]
+        self.ids.cat_12.text = news_list[11]
+        self.ids.cat_13.text = news_list[12]
+        self.ids.cat_14.text = news_list[13]
+        self.ids.cat_15.text = news_list[14]
+        self.ids.cat_16.text = news_list[15]
+        self.ids.cat_17.text = news_list[16]
+        self.ids.cat_18.text = news_list[17]
+        self.ids.cat_19.text = news_list[18]
+        self.ids.cat_20.text = news_list[19]
+        # Link Generator
+        self.news_link_list = news.cat_headlines_link(category)
+
+    def cat_headline_opener(self,ids):
+        webbrowser.open(self.news_link_list[ids],new=2)
 
 class NewsByTopic(Screen):
 
@@ -155,9 +209,8 @@ class AdjutorExclusive(Screen):
         self.ids.ae_9.text = 'Headline-9'
         self.ids.ae_10.text = 'Headline-10'
     
-    def ae_1(self):
-        # for test
-        webbrowser.open('http://google.com', new=2)
+    def headline_opener(self,ids):
+        webbrowser.open(news.ae_headlines_link()[ids],new=2)
 
 class WikiSearchScreen(Screen):
 
