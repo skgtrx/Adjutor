@@ -2,9 +2,8 @@ from newsapi import NewsApiClient
 news = NewsApiClient(api_key='6bb8e26abfc14f30bdf9a25ff6a893bf')
 
 # Top News
-top_news = news.get_top_headlines(language='en',page_size=10)
-
-def top_headlines():
+def top_headlines(country=None):
+	top_news = news.get_top_headlines(country=country,language='en',page_size=10)
 	top_headlines=[]
 	for i in range(len(top_news['articles'])):
 		#111
@@ -15,7 +14,8 @@ def top_headlines():
 			top_headlines.append(title)
 	return top_headlines
 
-def top_headlines_link():
+def top_headlines_link(country=None):
+	top_news = news.get_top_headlines(country=country,language='en',page_size=10)
 	top_headlines_link=[]
 	for i in range(len(top_news['articles'])):
 		top_headlines_link.append(top_news['articles'][i]['url'])
@@ -47,7 +47,6 @@ def cat_headlines(category='general'):
 	cat_news = news.get_top_headlines(category=category,country='us',page_size=20)
 	cat_headlines=[]
 	for i in range(len(cat_news['articles'])):
-		#111
 		title = cat_news['articles'][i]['title']
 		if(len(title)>105):
 			cat_headlines.append(title[:105]+'. . .')
@@ -61,19 +60,3 @@ def cat_headlines_link(category='general'):
 	for i in range(len(cat_news['articles'])):
 		cat_headlines_link.append(cat_news['articles'][i]['url'])
 	return cat_headlines_link
-
-# Adjutor Exclusive
-
-def ae_headlines():
-	pass
-
-def ae_headlines_link():
-	pass
-	
-'''
-x = cat_headlines()
-[print(i) for i in x]
-
-x = cat_headlines_link()
-[print(i) for i in x]
-'''
