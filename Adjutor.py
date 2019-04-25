@@ -221,7 +221,111 @@ class WikiSearchScreen(Screen):
         self.ids.wikiResult.text=wikipedia.get_summary(text)
 
 class CodingScreen(Screen):
-    pass
+    
+    def on_parent(self,widget,parent):
+        title_list = coding.event_title()
+        start_list = coding.event_start_time()
+        end_list = coding.event_end_time()
+        self.url_list = coding.event_url()
+
+        # Title
+        self.ids.code_title_1.text = title_list[0]
+        self.ids.code_title_2.text = title_list[1]
+        self.ids.code_title_3.text = title_list[2]
+        self.ids.code_title_4.text = title_list[3]
+        self.ids.code_title_5.text = title_list[4]
+        self.ids.code_title_6.text = title_list[5]
+        self.ids.code_title_7.text = title_list[6]
+        self.ids.code_title_8.text = title_list[7]
+        self.ids.code_title_9.text = title_list[8]
+        self.ids.code_title_10.text = title_list[9]
+        self.ids.code_title_11.text = title_list[10]
+        self.ids.code_title_12.text = title_list[11]
+        self.ids.code_title_13.text = title_list[12]
+        self.ids.code_title_14.text = title_list[13]
+        self.ids.code_title_15.text = title_list[14]
+        self.ids.code_title_16.text = title_list[15]
+        self.ids.code_title_17.text = title_list[16]
+        self.ids.code_title_18.text = title_list[17]
+        self.ids.code_title_19.text = title_list[18]
+        self.ids.code_title_20.text = title_list[19]
+        self.ids.code_title_21.text = title_list[20]
+        self.ids.code_title_22.text = title_list[21]
+        self.ids.code_title_23.text = title_list[22]
+        self.ids.code_title_24.text = title_list[23]
+        self.ids.code_title_25.text = title_list[24]
+        self.ids.code_title_26.text = title_list[25]
+        self.ids.code_title_27.text = title_list[26]
+        self.ids.code_title_28.text = title_list[27]
+        self.ids.code_title_29.text = title_list[28]
+        self.ids.code_title_30.text = title_list[29]
+
+        # Start
+        self.ids.code_start_1.text = start_list[0]
+        self.ids.code_start_2.text = start_list[1]
+        self.ids.code_start_3.text = start_list[2]
+        self.ids.code_start_4.text = start_list[3]
+        self.ids.code_start_5.text = start_list[4]
+        self.ids.code_start_6.text = start_list[5]
+        self.ids.code_start_7.text = start_list[6]
+        self.ids.code_start_8.text = start_list[7]
+        self.ids.code_start_9.text = start_list[8]
+        self.ids.code_start_10.text = start_list[9]
+        self.ids.code_start_11.text = start_list[10]
+        self.ids.code_start_12.text = start_list[11]
+        self.ids.code_start_13.text = start_list[12]
+        self.ids.code_start_14.text = start_list[13]
+        self.ids.code_start_15.text = start_list[14]
+        self.ids.code_start_16.text = start_list[15]
+        self.ids.code_start_17.text = start_list[16]
+        self.ids.code_start_18.text = start_list[17]
+        self.ids.code_start_19.text = start_list[18]
+        self.ids.code_start_20.text = start_list[19]
+        self.ids.code_start_21.text = start_list[20]
+        self.ids.code_start_22.text = start_list[21]
+        self.ids.code_start_23.text = start_list[22]
+        self.ids.code_start_24.text = start_list[23]
+        self.ids.code_start_25.text = start_list[24]
+        self.ids.code_start_26.text = start_list[25]
+        self.ids.code_start_27.text = start_list[26]
+        self.ids.code_start_28.text = start_list[27]
+        self.ids.code_start_29.text = start_list[28]
+        self.ids.code_start_30.text = start_list[29]
+
+        # End
+        self.ids.code_end_1.text = end_list[0]
+        self.ids.code_end_2.text = end_list[1]
+        self.ids.code_end_3.text = end_list[2]
+        self.ids.code_end_4.text = end_list[3]
+        self.ids.code_end_5.text = end_list[4]
+        self.ids.code_end_6.text = end_list[5]
+        self.ids.code_end_7.text = end_list[6]
+        self.ids.code_end_8.text = end_list[7]
+        self.ids.code_end_9.text = end_list[8]
+        self.ids.code_end_10.text = end_list[9]
+        self.ids.code_end_11.text = end_list[10]
+        self.ids.code_end_12.text = end_list[11]
+        self.ids.code_end_13.text = end_list[12]
+        self.ids.code_end_14.text = end_list[13]
+        self.ids.code_end_15.text = end_list[14]
+        self.ids.code_end_16.text = end_list[15]
+        self.ids.code_end_17.text = end_list[16]
+        self.ids.code_end_18.text = end_list[17]
+        self.ids.code_end_19.text = end_list[18]
+        self.ids.code_end_20.text = end_list[19]
+        self.ids.code_end_21.text = end_list[20]
+        self.ids.code_end_22.text = end_list[21]
+        self.ids.code_end_23.text = end_list[22]
+        self.ids.code_end_24.text = end_list[23]
+        self.ids.code_end_25.text = end_list[24]
+        self.ids.code_end_26.text = end_list[25]
+        self.ids.code_end_27.text = end_list[26]
+        self.ids.code_end_28.text = end_list[27]
+        self.ids.code_end_29.text = end_list[28]
+        self.ids.code_end_30.text = end_list[29]
+
+    def event_opener(self,ids):
+        webbrowser.open(self.url_list[ids],new=2)
 
 class EndScreen(Screen):
     pass

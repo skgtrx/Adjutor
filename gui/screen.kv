@@ -47,7 +47,9 @@ ScreenManager:
 		rows:1
 		Button:
 			id : nav
-			text:"Welcome to Adjutor"
+			markup: True
+			text: "[size=20][color=ADFF2F][b]Welcome to Adjutor[/b][/color][/size]"
+			#text:"Welcome to Adjutor"
 	GridLayout:
 		padding: 10,80,10,10
 		rows:2
@@ -582,23 +584,21 @@ ScreenManager:
 <CodingScreen>:
 	name: 'coding_screen'
 	GridLayout:
-		cols: 1
-		rows: 1
-		padding:200,20,200,550
-		Button:
-			text: 'Update'
-	GridLayout:
 		cols: 4
 		rows: 1
-		padding:10,55,10,515
+		padding:10,0,10,515
 		Label:
-			text: 'Event'
+			markup: True
+			text: "[size=20][color=ADFF2F][b]Event Title[/b][/color][/size]"
 		Label:
-			text: 'Start'
+			markup: True
+			text: "[size=20][color=ADFF2F][b]Start Time[/b][/color][/size]"
 		Label:
-			text: 'End'
+			markup: True
+			text: "[size=20][color=ADFF2F][b]End Time[/b][/color][/size]"
 		Label:
-			text: 'Event Link'
+			size_hint_x: 0.2
+			text: ''
 	ScrollView:
 		size_hint: 1, 0.75
         pos_hint:{'x': .0, 'y': .12}
@@ -607,12 +607,432 @@ ScreenManager:
 		GridLayout:
 			size_hint: None,None
 			width: 800
-            height: 2000
+            height: 1200
 			cols:4
-			padding: 10,10,10,10
-			spacing: 5
-			on_parent:
-				for i in range(50): self.add_widget(Label(text=str(i)));self.add_widget(Label(text=str(i)));self.add_widget(Label(text=str(i)));self.add_widget(Button(text=str(i)))
+			padding: 10,0,10,10
+			spacing: 10
+			Label:
+				id: code_title_1
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_1
+			Label:
+				id: code_end_1
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(0)
+
+			Label:
+				id: code_title_2
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_2
+			Label:
+				id: code_end_2
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(1)
+			
+			Label:
+				id: code_title_3
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_3
+			Label:
+				id: code_end_3
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(2)
+
+			Label:
+				id: code_title_4
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_4
+			Label:
+				id: code_end_4
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(3)
+
+			Label:
+				id: code_title_5
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_5
+			Label:
+				id: code_end_5
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(4)
+
+			Label:
+				id: code_title_6
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_6
+			Label:
+				id: code_end_6
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(5)
+
+			Label:
+				id: code_title_7
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_7
+			Label:
+				id: code_end_7
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(6)
+
+			Label:
+				id: code_title_8
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_8
+			Label:
+				id: code_end_8
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(7)
+
+			Label:
+				id: code_title_9
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_9
+			Label:
+				id: code_end_9
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(8)
+
+			Label:
+				id: code_title_10
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_10
+			Label:
+				id: code_end_10
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(9)
+
+			Label:
+				id: code_title_11
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_11
+			Label:
+				id: code_end_11
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(10)
+
+			Label:
+				id: code_title_12
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_12
+			Label:
+				id: code_end_12
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(11)
+
+			Label:
+				id: code_title_13
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_13
+			Label:
+				id: code_end_13
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(12)
+
+			Label:
+				id: code_title_14
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_14
+			Label:
+				id: code_end_14
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(13)
+
+			Label:
+				id: code_title_15
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_15
+			Label:
+				id: code_end_15
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(14)
+
+			Label:
+				id: code_title_16
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_16
+			Label:
+				id: code_end_16
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(15)
+
+			Label:
+				id: code_title_17
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_17
+			Label:
+				id: code_end_17
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(16)
+
+			Label:
+				id: code_title_18
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_18
+			Label:
+				id: code_end_18
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(17)
+
+			Label:
+				id: code_title_19
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_19
+			Label:
+				id: code_end_19
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(18)
+
+			Label:
+				id: code_title_20
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_20
+			Label:
+				id: code_end_20
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: root.event_opener(19)
+
+			Label:
+				id: code_title_21
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_21
+			Label:
+				id: code_end_21
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(20)
+
+			Label:
+				id: code_title_22
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_22
+			Label:
+				id: code_end_22
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(21)
+
+			Label:
+				id: code_title_23
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_23
+			Label:
+				id: code_end_23
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(22)
+
+			Label:
+				id: code_title_24
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_24
+			Label:
+				id: code_end_24
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(23)
+
+			Label:
+				id: code_title_25
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_25
+			Label:
+				id: code_end_25
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(24)
+
+			Label:
+				id: code_title_26
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_26
+			Label:
+				id: code_end_26
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(25)
+
+			Label:
+				id: code_title_27
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_27
+			Label:
+				id: code_end_27
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(26)
+
+			Label:
+				id: code_title_28
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_28
+			Label:
+				id: code_end_28
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(27)
+
+			Label:
+				id: code_title_29
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_29
+			Label:
+				id: code_end_29
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(28)
+
+			Label:
+				id: code_title_30
+				text_size:self.size
+				halign:'left'
+				valign:'middle'
+			Label:
+				id: code_start_30
+			Label:
+				id: code_end_30
+			Button:
+				size_hint_x : 0.2
+				text:'<*>'
+				on_press: event_opener(29)
+
+			#on_parent:
+			#	for i in range(30): self.add_widget(Label(text='Codechef - December Lunchtime 2019'));self.add_widget(Label(text=str(i)));self.add_widget(Label(text=str(i)));self.add_widget(Button(text='GO',size_hint_x=0.2))
 				
 	AnchorLayout:
 		anchor_x: 'center'
