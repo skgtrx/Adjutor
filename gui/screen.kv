@@ -43,76 +43,86 @@ ScreenManager:
 <SelectScreen>:
 	name: 'select_screen'
 	GridLayout:
-		padding: 0,0,0,540
+		padding: 0,5,0,540
 		rows:1
 		Button:
 			id : nav
 			markup: True
-			text: "[size=20][color=ADFF2F][b]Welcome to Adjutor[/b][/color][/size]"
-			#text:"Welcome to Adjutor"
+			text: "[size=35][color=ADFF2F][b]Welcome to Adjutor[/b][/color][/size]"
+			background_color: 0,0,0,0
 	GridLayout:
 		padding: 10,80,10,10
 		rows:2
 		cols:2
 		spacing: 10
 		Button:
-			text: 'News'
+			markup: True
+			text: '[size=30][b]News[/b][/size]'
+			background_normal:  'img/news2.png'
 			on_press:
+				root.poper()
 				app.root.transition.direction = 'left' 
 				app.root.current = 'news_screen'
 		Button:
-			text: "Weather"
-			#background_normal:  "icons/weather.png"
+			markup: True
+			text: '[size=30][b]Weather[/b][/size]'
+			background_color: 
+			background_normal:  'img/weather.jpg'
 			on_press:
 				app.root.transition.direction = 'left'  
 				app.root.current = 'weather_screen'
 		Button:
-			text:'Wiki Search'
-			#background_normal:  "weather.gif"
-        	#background_down:    "start.png"
+			background_normal:  'img/wikisearch.png'
 			on_press: 
 				app.root.transition.direction = 'left' 
 				app.root.current = 'wiki_screen'
 			background: 0, 0, 0, 0
 		Button:
-			text:'Coding Calender'
+			background_normal:  'img/coding.png'
 			on_press:
 				app.root.transition.direction = 'left'  
 				app.root.current = 'coding_screen'
-			#background_color: 0, 0, 0, 0
 		
 
 <NewsScreen>:
 	name: 'news_screen'
+	canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'img/news2.png'
 	GridLayout:
 		padding: 10,10,10,70
 		rows:2
 		cols:2
 		spacing: 10
 		Button:
-			text: 'Top Headlines'
+			markup: True
+			text: '[size=30][b]Top Headlines[/b][/size]'
+			background_color: 0, 0, 0.502,0.7
 			on_press:
 				app.root.transition.direction = 'left' 
 				app.root.current = 'top_headlines'
-				#root.get_top_headlines()
 
 		Button:
-			text:'News By Category'
-			#background_normal:  "weather.gif"
-        	#background_down:    "start.png"
+			markup: True
+			text: '[size=30][b]News By Category[/b][/size]'
+			background_color: 0, 0, 0.502,0.7
 			on_press: 
 				app.root.transition.direction = 'left' 
 				app.root.current = 'news_by_category'
-			background: 0, 0, 0, 0
+			#background: 0, 0, 0, 0
 		Button:
-			text:'News By Topic'
+			markup: True
+			text: '[size=30][b]News By Topic[/b][/size]'
+			background_color: 0, 0, 0.502,0.7
 			on_press:
 				app.root.transition.direction = 'left'  
 				app.root.current = 'news_by_topic'
-			#background_color: 0, 0, 0, 0
 		Button:
-			text: "Adjutor India Exclusive"
-			#background_normal:  "icons/weather.png"
+			markup: True
+			text: '[size=30][b]Adjutor India Exclusive[/b][/size]'
+			background_color: 0, 0, 0.502,0.7
 			on_press:
 				app.root.transition.direction = 'left'  
 				app.root.current = 'adjutor_exclusive'
@@ -126,10 +136,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'select_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 
 <TopHeadlines>:
 	name: 'top_headlines'
@@ -139,48 +151,63 @@ ScreenManager:
 		spacing: 5
 		Button:
 			id: top_1
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(0)
 		Button:
 			id: top_2
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(1)
 		Button:
 			id: top_3
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(2)
 		Button:
 			id: top_4
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(3)
 		Button:
 			id: top_5
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(4)
 		Button:
 			id: top_6
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(5)
 		Button:
 			id: top_7
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(6)
 		Button:
 			id: top_8
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(7)
 		Button:
 			id: top_9
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(8)
 		Button:
 			id: top_10
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(9)
 
 	AnchorLayout:
@@ -193,10 +220,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'news_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 
 <NewsByCategory>:
 	name: 'news_by_category'
@@ -205,19 +234,24 @@ ScreenManager:
 		padding: 10,10,10,550
 		spacing: 5
 		Button:
-			text: 'Business'
+			markup: True
+			text: '[b]Business[/b]'
 			on_press: root.cat_news_loader('business')
 		Button:
-			text: 'Entertainment'
+			markup: True
+			text: '[b]Entertainment[/b]'
 			on_press: root.cat_news_loader('entertainment')
 		Button:
-			text: 'Health'
+			markup: True
+			text: '[b]Health[/b]'
 			on_press: root.cat_news_loader('health')
 		Button:
-			text: 'Sports'
+			markup: True
+			text: '[b]Sports[/b]'
 			on_press: root.cat_news_loader('sports')
 		Button:
-			text: 'Technology'
+			markup: True
+			text: '[b]Technology[/b]'
 			on_press: root.cat_news_loader('technology')
 
 	ScrollView:
@@ -234,93 +268,123 @@ ScreenManager:
 			spacing: 5
 			Button:
 				id: cat_1
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(0)
 			Button:
 				id: cat_2
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(1)	
 			Button:
 				id: cat_3
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(2)
 			Button:
 				id: cat_4
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(3)	
 			Button:
 				id: cat_5
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(4)
 			Button:
 				id: cat_6
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(5)	
 			Button:
 				id: cat_7
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(6)
 			Button:
 				id: cat_8
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(7)	
 			Button:
 				id: cat_9
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(8)
 			Button:
 				id: cat_10
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(9)	
 			Button:
 				id: cat_11
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(10)
 			Button:
 				id: cat_12
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(11)	
 			Button:
 				id: cat_13
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(12)
 			Button:
 				id: cat_14
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(13)	
 			Button:
 				id: cat_15
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(14)
 			Button:
 				id: cat_16
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(15)	
 			Button:
 				id: cat_17
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(16)
 			Button:
 				id: cat_18
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(17)	
 			Button:
 				id: cat_19
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.cat_headline_opener(18)
 			Button:
 				id: cat_20
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.cat_headline_opener(19)		
 	
 	AnchorLayout:
@@ -333,10 +397,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'news_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 
 <NewsByTopic>:
 	name: 'news_by_topic'
@@ -352,7 +418,8 @@ ScreenManager:
 			focus:True
 		Button:
 			size_hint_x: .2
-			text: 'Enter'
+			markup: True
+			text: '[b]Enter[/b]'
 			on_press : root.news_on_screen_loader()
 	ScrollView:
 		size_hint: 1, 0.75
@@ -368,93 +435,123 @@ ScreenManager:
 			spacing: 5
 			Button:
 				id: q_res_1
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(0)
 			Button:
 				id: q_res_2
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(1)	
 			Button:
 				id: q_res_3
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(2)
 			Button:
 				id: q_res_4
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(3)	
 			Button:
 				id: q_res_5
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(4)
 			Button:
 				id: q_res_6
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(5)	
 			Button:
 				id: q_res_7
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(6)
 			Button:
 				id: q_res_8
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(7)	
 			Button:
 				id: q_res_9
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(8)
 			Button:
 				id: q_res_10
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(9)	
 			Button:
 				id: q_res_11
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(10)
 			Button:
 				id: q_res_12
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(11)	
 			Button:
 				id: q_res_13
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(12)
 			Button:
 				id: q_res_14
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(13)	
 			Button:
 				id: q_res_15
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(14)
 			Button:
 				id: q_res_16
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(15)	
 			Button:
 				id: q_res_17
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(16)
 			Button:
 				id: q_res_18
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(17)	
 			Button:
 				id: q_res_19
+				markup: True
 				text: 
 				background_color:(1, 0, 0, 1)
 				on_press: root.query_opener(18)
 			Button:
 				id: q_res_20
+				markup: True
 				text:
+				background_color:(0, 0, 0.6, 0.5)
 				on_press: root.query_opener(19)
 
 	AnchorLayout:
@@ -467,10 +564,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'news_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 
 <AdjutorExclusive>:
 	name: 'adjutor_exclusive'
@@ -480,48 +579,63 @@ ScreenManager:
 		spacing: 5
 		Button:
 			id: ae_1
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(0)
 		Button:
 			id: ae_2
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(1)
 		Button:
 			id: ae_3
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(2)
 		Button:
 			id: ae_4
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(3)
 		Button:
 			id: ae_5
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(4)
 		Button:
 			id: ae_6
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(5)
 		Button:
 			id: ae_7
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(6)
 		Button:
 			id: ae_8
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(7)
 		Button:
 			id: ae_9
+			markup: True
 			text: 
 			background_color:(1, 0, 0, 1)
 			on_press: root.headline_opener(8)
 		Button:
 			id: ae_10
+			markup: True
 			text:
+			background_color:(0, 0, 0.6, 0.5)
 			on_press: root.headline_opener(9)
 
 	AnchorLayout:
@@ -534,10 +648,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'news_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 
 <WikiSearchScreen>:
 	name: 'wiki_screen'
@@ -553,7 +669,8 @@ ScreenManager:
 			focus:True
 		Button:
 			size_hint_x: .2
-			text: 'Enter'
+			markup: True
+			text: '[b]Search[/b]'
 			on_press : root.get_wiki()
 	GridLayout:
 		cols:1
@@ -577,10 +694,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'select_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 <CodingScreen>:
 	name: 'coding_screen'
 	GridLayout:
@@ -1044,10 +1163,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'select_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 <WeatherScreen>:
 	name: 'weather_screen'
 	GridLayout:
@@ -1063,7 +1184,8 @@ ScreenManager:
 			focus:True
 		Button:
 			size_hint_x: .2
-			text: 'Enter'
+			markup: True
+			text: '[b]Enter[/b]'
 			on_press : root.get_weather()
 	GridLayout:
 		rows : 5
@@ -1083,11 +1205,14 @@ ScreenManager:
 		Label:
 			text:
 		Button:
-			text: 'Max Temperature'
+			markup: True
+			text: '[b]Max Temperature[/b]'
 		Button:
-			text: 'Min Temperature'
+			markup: True
+			text: '[b]Min Temperature[/b]'
 		Button:
-			text: 'Weather Status'
+			markup: True
+			text: '[b]Weather Status[/b]'
 		Label:
 			id: temp_max
 			text:
@@ -1098,14 +1223,16 @@ ScreenManager:
 			id : status
 			text:
 		Button:
-			text: 'Wind'
+			markup: True
+			text: '[b]Wind[/b]'
 		Label:
 			id : wind
 			text:
 		Label:
 			text: 
 		Button:
-			text:'Humidity'
+			markup: True
+			text:'[b]Humidity[/b]'
 		Label:
 			id: humidity
 			text: 
@@ -1122,10 +1249,12 @@ ScreenManager:
 				on_press: 
 					app.root.transition.direction = 'right'
 					app.root.current = 'select_screen'
-				text: "Back"
+				markup: True
+				text: "[size=30][b]Back[/b][/size]"
 			Button:
 				on_press: app.root.current = 'end_screen'
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"
 <EndScreen>:
 	name: 'end_screen'
 	GridLayout:
@@ -1143,9 +1272,9 @@ ScreenManager:
 		Button:
 			background_color: 0, 0, 0, 0
 			Image:
-				source: 'thanks.png'
-				y: self.parent.y + self.parent.height - 100
-				x: self.parent.width/2.0 + 15
+				source: 'img/thanks.png'
+				y: self.parent.y + self.parent.height - 150
+				x: self.parent.width/2.0 + 150
 				size: 250, 250
 				allow_stretch: True
 		Label:
@@ -1164,4 +1293,5 @@ ScreenManager:
 			size_hint: 1, .1
 			Button:
 				on_press: app.stop()
-				text: "Exit"
+				markup: True
+				text: "[size=30][b]Exit[/b][/size]"

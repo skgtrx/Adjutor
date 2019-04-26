@@ -5,16 +5,22 @@ from pyowm.caches.lrucache import LRUCache
 cache = LRUCache()
 
 def temp_max(location):
-    obs = owm.weather_at_place(location)
-    w = obs.get_weather()
-    temp = w.get_temperature(unit='celsius')['temp_max']
-    return str(temp)
+    try:
+        obs = owm.weather_at_place(location)
+        w = obs.get_weather()
+        temp = w.get_temperature(unit='celsius')['temp_max']
+        return str(temp)
+    except:
+        return 'NA'
 
 def temp_min(location):
-    obs = owm.weather_at_place(location)
-    w = obs.get_weather()
-    temp = w.get_temperature(unit='celsius')['temp_min']
-    return str(temp)
+    try:
+        obs = owm.weather_at_place(location)
+        w = obs.get_weather()
+        temp = w.get_temperature(unit='celsius')['temp_min']
+        return str(temp)
+    except:
+        return 'NA'
 
 def status(location):
     obs = owm.weather_at_place(location)

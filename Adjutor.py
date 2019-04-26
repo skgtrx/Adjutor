@@ -7,6 +7,8 @@ Copyright : MITopen@skgtrx
 
 # Import kivy packages
 from kivy.uix.textinput import TextInput
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 import kivy,json
 from kivy.uix.image import Image
 from kivy.uix.scrollview import ScrollView
@@ -18,6 +20,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.core.window import Window
+from kivy.config import Config
 # Import GUI Packages
 
 # Import Modules
@@ -32,9 +35,10 @@ import webbrowser
 # Other Imports
 
 # Output frame size
-Window.size = (800, 600)
+Config.set("graphics", "width", 800)
+Config.set("graphics", "height", 600)
 
-# Loq_resion Database 
+# Location Database 
 with open('data/city.json', 'r',encoding="utf8") as f:
     data = json.load(f)
 city = []
@@ -42,14 +46,16 @@ code = {}
 for i in data:
     city.append(i['name'])
     code[i['name']]=i['country']
-# Loq_resion Database
+# Location Database
 
 # Appliq_resion Screens
 class StartScreen(Screen):
     pass
 
 class SelectScreen(Screen):
-    pass
+    def poper(self):
+        popup = Popup(title='Disclaimer',content=Label(text="Slow Internet Connection\nmay lead to take\nmore time to fetch data\nKeep Patience!!!"),size_hint_x=0.3,size_hint_y=0.3)
+        popup.open()
 
 class WeatherScreen(Screen):
     word_list = city
@@ -67,7 +73,6 @@ class WeatherScreen(Screen):
             self.ids.city.suggestion_text = word
         except IndexError:
             pass
-            #self.ids.city.insert_text(self.ids.city.suggestion_text)
 
     def get_weather(self):
         loc = self.ids.city.text
@@ -82,8 +87,6 @@ class WeatherScreen(Screen):
         self.ids.humidity.text = weather.humidity(self.loc)
         
 
-
-
 class NewsScreen(Screen):
     pass
 
@@ -91,16 +94,18 @@ class TopHeadlines(Screen):
 
     def on_parent(self,widget,parent):
         # Headlines Loader
-        self.ids.top_1.text = news.top_headlines()[0]
-        self.ids.top_2.text = news.top_headlines()[1]
-        self.ids.top_3.text = news.top_headlines()[2]
-        self.ids.top_4.text = news.top_headlines()[3]
-        self.ids.top_5.text = news.top_headlines()[4]
-        self.ids.top_6.text = news.top_headlines()[5]
-        self.ids.top_7.text = news.top_headlines()[6]
-        self.ids.top_8.text = news.top_headlines()[7]
-        self.ids.top_9.text = news.top_headlines()[8]
-        self.ids.top_10.text = news.top_headlines()[9]
+        news_list = news.top_headlines()
+        if(len(news_list)>0):
+            self.ids.top_1.text = '[b]'+news_list[0]+'[/b]'
+            self.ids.top_2.text = '[b]'+news_list[1]+'[/b]'
+            self.ids.top_3.text = '[b]'+news_list[2]+'[/b]'
+            self.ids.top_4.text = '[b]'+news_list[3]+'[/b]'
+            self.ids.top_5.text = '[b]'+news_list[4]+'[/b]'
+            self.ids.top_6.text = '[b]'+news_list[5]+'[/b]'
+            self.ids.top_7.text = '[b]'+news_list[6]+'[/b]'
+            self.ids.top_8.text = '[b]'+news_list[7]+'[/b]'
+            self.ids.top_9.text = '[b]'+news_list[8]+'[/b]'
+            self.ids.top_10.text = '[b]'+news_list[9]+'[/b]'
 
     def headline_opener(self,ids):
         webbrowser.open(news.top_headlines_link()[ids],new=2)
@@ -111,52 +116,52 @@ class NewsByCategory(Screen):
     def on_parent(self,widget,parent):
         # Headlines Loader
         news_list = news.cat_headlines()
-        self.ids.cat_1.text = news_list[0]
-        self.ids.cat_2.text = news_list[1]
-        self.ids.cat_3.text = news_list[2]
-        self.ids.cat_4.text = news_list[3]
-        self.ids.cat_5.text = news_list[4]
-        self.ids.cat_6.text = news_list[5]
-        self.ids.cat_7.text = news_list[6]
-        self.ids.cat_8.text = news_list[7]
-        self.ids.cat_9.text = news_list[8]
-        self.ids.cat_10.text = news_list[9]
-        self.ids.cat_11.text = news_list[10]
-        self.ids.cat_12.text = news_list[11]
-        self.ids.cat_13.text = news_list[12]
-        self.ids.cat_14.text = news_list[13]
-        self.ids.cat_15.text = news_list[14]
-        self.ids.cat_16.text = news_list[15]
-        self.ids.cat_17.text = news_list[16]
-        self.ids.cat_18.text = news_list[17]
-        self.ids.cat_19.text = news_list[18]
-        self.ids.cat_20.text = news_list[19]
+        self.ids.cat_1.text = '[b]'+news_list[0]+'[/b]'
+        self.ids.cat_2.text = '[b]'+news_list[1]+'[/b]'
+        self.ids.cat_3.text = '[b]'+news_list[2]+'[/b]'
+        self.ids.cat_4.text = '[b]'+news_list[3]+'[/b]'
+        self.ids.cat_5.text = '[b]'+news_list[4]+'[/b]'
+        self.ids.cat_6.text = '[b]'+news_list[5]+'[/b]'
+        self.ids.cat_7.text = '[b]'+news_list[6]+'[/b]'
+        self.ids.cat_8.text = '[b]'+news_list[7]+'[/b]'
+        self.ids.cat_9.text = '[b]'+news_list[8]+'[/b]'
+        self.ids.cat_10.text = '[b]'+news_list[9]+'[/b]'
+        self.ids.cat_11.text = '[b]'+news_list[10]+'[/b]'
+        self.ids.cat_12.text = '[b]'+news_list[11]+'[/b]'
+        self.ids.cat_13.text = '[b]'+news_list[12]+'[/b]'
+        self.ids.cat_14.text = '[b]'+news_list[13]+'[/b]'
+        self.ids.cat_15.text = '[b]'+news_list[14]+'[/b]'
+        self.ids.cat_16.text = '[b]'+news_list[15]+'[/b]'
+        self.ids.cat_17.text = '[b]'+news_list[16]+'[/b]'
+        self.ids.cat_18.text = '[b]'+news_list[17]+'[/b]'
+        self.ids.cat_19.text = '[b]'+news_list[18]+'[/b]'
+        self.ids.cat_20.text = '[b]'+news_list[19]+'[/b]'
         # Link Generator
         self.news_link_list = news.cat_headlines_link()
     
 
     def cat_news_loader(self,category):
         news_list = news.cat_headlines(category)
-        self.ids.cat_1.text = news_list[0]
-        self.ids.cat_2.text = news_list[1]
-        self.ids.cat_3.text = news_list[2]
-        self.ids.cat_4.text = news_list[3]
-        self.ids.cat_5.text = news_list[4]
-        self.ids.cat_6.text = news_list[5]
-        self.ids.cat_7.text = news_list[6]
-        self.ids.cat_8.text = news_list[7]
-        self.ids.cat_9.text = news_list[8]
-        self.ids.cat_10.text = news_list[9]
-        self.ids.cat_11.text = news_list[10]
-        self.ids.cat_12.text = news_list[11]
-        self.ids.cat_13.text = news_list[12]
-        self.ids.cat_14.text = news_list[13]
-        self.ids.cat_15.text = news_list[14]
-        self.ids.cat_16.text = news_list[15]
-        self.ids.cat_17.text = news_list[16]
-        self.ids.cat_18.text = news_list[17]
-        self.ids.cat_19.text = news_list[18]
-        self.ids.cat_20.text = news_list[19]
+        self.ids.cat_1.text = '[b]'+news_list[0]+'[/b]'
+        self.ids.cat_2.text = '[b]'+news_list[1]+'[/b]'
+        self.ids.cat_3.text = '[b]'+news_list[2]+'[/b]'
+        self.ids.cat_4.text = '[b]'+news_list[3]+'[/b]'
+        self.ids.cat_5.text = '[b]'+news_list[4]+'[/b]'
+        self.ids.cat_6.text = '[b]'+news_list[5]+'[/b]'
+        self.ids.cat_7.text = '[b]'+news_list[6]+'[/b]'
+        self.ids.cat_8.text = '[b]'+news_list[7]+'[/b]'
+        self.ids.cat_9.text = '[b]'+news_list[8]+'[/b]'
+        self.ids.cat_10.text = '[b]'+news_list[9]+'[/b]'
+        self.ids.cat_11.text = '[b]'+news_list[10]+'[/b]'
+        self.ids.cat_12.text = '[b]'+news_list[11]+'[/b]'
+        self.ids.cat_13.text = '[b]'+news_list[12]+'[/b]'
+        self.ids.cat_14.text = '[b]'+news_list[13]+'[/b]'
+        self.ids.cat_15.text = '[b]'+news_list[14]+'[/b]'
+        self.ids.cat_16.text = '[b]'+news_list[15]+'[/b]'
+        self.ids.cat_17.text = '[b]'+news_list[16]+'[/b]'
+        self.ids.cat_18.text = '[b]'+news_list[17]+'[/b]'
+        self.ids.cat_19.text = '[b]'+news_list[18]+'[/b]'
+        self.ids.cat_20.text = '[b]'+news_list[19]+'[/b]'
         # Link Generator
         self.news_link_list = news.cat_headlines_link(category)
 
@@ -168,26 +173,26 @@ class NewsByTopic(Screen):
     def news_on_screen_loader(self):
         self.query = self.ids.newsTopic.text
         news_list = news.get_news(self.query)
-        self.ids.q_res_1.text = news_list[0]
-        self.ids.q_res_2.text = news_list[1]
-        self.ids.q_res_3.text = news_list[2]
-        self.ids.q_res_4.text = news_list[3]
-        self.ids.q_res_5.text = news_list[4]
-        self.ids.q_res_6.text = news_list[5]
-        self.ids.q_res_7.text = news_list[6]
-        self.ids.q_res_8.text = news_list[7]
-        self.ids.q_res_9.text = news_list[8]
-        self.ids.q_res_10.text = news_list[9]
-        self.ids.q_res_11.text = news_list[10]
-        self.ids.q_res_12.text = news_list[11]
-        self.ids.q_res_13.text = news_list[12]
-        self.ids.q_res_14.text = news_list[13]
-        self.ids.q_res_15.text = news_list[14]
-        self.ids.q_res_16.text = news_list[15]
-        self.ids.q_res_17.text = news_list[16]
-        self.ids.q_res_18.text = news_list[17]
-        self.ids.q_res_19.text = news_list[18]
-        self.ids.q_res_20.text = news_list[19]
+        self.ids.q_res_1.text = '[b]'+news_list[0]+'[/b]'
+        self.ids.q_res_2.text = '[b]'+news_list[1]+'[/b]'
+        self.ids.q_res_3.text = '[b]'+news_list[2]+'[/b]'
+        self.ids.q_res_4.text = '[b]'+news_list[3]+'[/b]'
+        self.ids.q_res_5.text = '[b]'+news_list[4]+'[/b]'
+        self.ids.q_res_6.text = '[b]'+news_list[5]+'[/b]'
+        self.ids.q_res_7.text = '[b]'+news_list[6]+'[/b]'
+        self.ids.q_res_8.text = '[b]'+news_list[7]+'[/b]'
+        self.ids.q_res_9.text = '[b]'+news_list[8]+'[/b]'
+        self.ids.q_res_10.text = '[b]'+news_list[9]+'[/b]'
+        self.ids.q_res_11.text = '[b]'+news_list[10]+'[/b]'
+        self.ids.q_res_12.text = '[b]'+news_list[11]+'[/b]'
+        self.ids.q_res_13.text = '[b]'+news_list[12]+'[/b]'
+        self.ids.q_res_14.text = '[b]'+news_list[13]+'[/b]'
+        self.ids.q_res_15.text = '[b]'+news_list[14]+'[/b]'
+        self.ids.q_res_16.text = '[b]'+news_list[15]+'[/b]'
+        self.ids.q_res_17.text = '[b]'+news_list[16]+'[/b]'
+        self.ids.q_res_18.text = '[b]'+news_list[17]+'[/b]'
+        self.ids.q_res_19.text = '[b]'+news_list[18]+'[/b]'
+        self.ids.q_res_20.text = '[b]'+news_list[19]+'[/b]'
         
         self.news_link_list = news.query_headlines_link(self.query)
     
@@ -198,16 +203,16 @@ class AdjutorExclusive(Screen):
     
     def on_parent(self,widget,parent):
         news_list = news.top_headlines(country='in')
-        self.ids.ae_1.text = news_list[0]
-        self.ids.ae_2.text = news_list[1]
-        self.ids.ae_3.text = news_list[2]
-        self.ids.ae_4.text = news_list[3]
-        self.ids.ae_5.text = news_list[4]
-        self.ids.ae_6.text = news_list[5]
-        self.ids.ae_7.text = news_list[6]
-        self.ids.ae_8.text = news_list[7]
-        self.ids.ae_9.text = news_list[8]
-        self.ids.ae_10.text = news_list[9]
+        self.ids.ae_1.text = '[b]'+news_list[0]+'[/b]'
+        self.ids.ae_2.text = '[b]'+news_list[1]+'[/b]'
+        self.ids.ae_3.text = '[b]'+news_list[2]+'[/b]'
+        self.ids.ae_4.text = '[b]'+news_list[3]+'[/b]'
+        self.ids.ae_5.text = '[b]'+news_list[4]+'[/b]'
+        self.ids.ae_6.text = '[b]'+news_list[5]+'[/b]'
+        self.ids.ae_7.text = '[b]'+news_list[6]+'[/b]'
+        self.ids.ae_8.text = '[b]'+news_list[7]+'[/b]'
+        self.ids.ae_9.text = '[b]'+news_list[8]+'[/b]'
+        self.ids.ae_10.text = '[b]'+news_list[9]+'[/b]'
         
         self.news_link_list = news.top_headlines_link(country='in')
     
@@ -219,6 +224,7 @@ class WikiSearchScreen(Screen):
     def get_wiki(self):
         text=self.ids.wiki.text
         self.ids.wikiResult.text=wikipedia.get_summary(text)
+
 
 class CodingScreen(Screen):
     
